@@ -2,6 +2,7 @@
 
 Welcome to **GreenMarket**, your one-stop online shop for all your grocery needs. This README will guide you through the setup and structure of the GreenMarket website, a simple frontend project built with HTML and CSS.
 
+* [Live Preview](https://abhay2133.github.io/codequotient/projects/GreenMarket_Website/)
 ## Table of Contents
 
 1. [Features](#features)
