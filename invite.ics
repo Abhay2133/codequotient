@@ -1,0 +1,49 @@
+BEGIN:VCALENDAR
+PRODID:-//Google Inc//Google Calendar 70.9054//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:REQUEST
+BEGIN:VTIMEZONE
+TZID:Asia/Kolkata
+X-LIC-LOCATION:Asia/Kolkata
+BEGIN:STANDARD
+TZOFFSETFROM:+0530
+TZOFFSETTO:+0530
+TZNAME:IST
+DTSTART:19700101T000000
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+DTSTART;TZID=Asia/Kolkata:20240614T103000
+DTEND;TZID=Asia/Kolkata:20240614T130000
+DTSTAMP:20240613T125958Z
+ORGANIZER;CN=Team CodeQuotient:mailto:team@cqst.in
+UID:7rfu5i32a63ig6hqdj7s4gvbcf@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=
+ TRUE;CN=abhaybishthestudent@gmail.com;X-NUM-GUESTS=0:mailto:abhaybishthestu
+ dent@gmail.com
+X-GOOGLE-CONFERENCE:https://meet.google.com/azg-jqvn-xwi
+X-MICROSOFT-CDO-OWNERAPPTID:1421745422
+RECURRENCE-ID;TZID=Asia/Kolkata:20240614T103000
+CREATED:20240612T123357Z
+DESCRIPTION:-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~
+ :~:~:~:~:~:~:~:~::~:~::-\nJoin with Google Meet: https://meet.google.com/az
+ g-jqvn-xwi\nOr dial: (US) +1 575-629-0151 PIN: 461125494#\nMore phone numbe
+ rs: https://tel.meet/azg-jqvn-xwi?pin=8512028311616&hs=7\n\nLearn more abou
+ t Meet at: https://support.google.com/a/users/answer/9282720\n\nPlease do n
+ ot edit this section.\n-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:
+ ~:~:~:~:~:~:~:~:~:~:~:~:~:~::~:~::-
+LAST-MODIFIED:20240613T125952Z
+LOCATION:
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Industrial Training Session
+TRANSP:OPAQUE
+ATTACH;FILENAME="Industrial Training Session (2024-06-13 10:30 GMT+5:30)";F
+ MTTYPE=video/mp4:https://drive.google.com/file/d/1ZUUjCqOux8Lfrmp2UvUKKtgsJ
+ McWKiaI/view?usp=drive_web
+ATTACH;FILENAME="Industrial Training Session (2024-06-13 10:30 GMT+5:30) – 
+ Chat transcript";FMTTYPE=text/plain:https://drive.google.com/file/d/1UCM4Kc
+ q3nQcu2vhkeoryy6fB7rn6bV1s/view?usp=drive_web
+END:VEVENT
+END:VCALENDAR
