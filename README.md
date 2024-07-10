@@ -1,6 +1,8 @@
 ﻿## CodeQuotient Training Assignment & Project
 
 This repository contains the code and resources for my training assignments and projects completed for CodeQuotient.
+<br>
+[Preview here](https://abhay2133.github.io/codequotient/projects/A9/)
 
 **Table of Contents**
 
