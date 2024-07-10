@@ -1,4 +1,4 @@
-body{
+body {
     margin: 0;
 }
 
@@ -6,23 +6,128 @@ body{
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.ParentContainer{
+.ParentContainer {
     display: flex;
 }
 
-.ParentContainer > * {
-    border: 1px solid #aaa;
-    border-radius:  10px;
+@media only screen and (max-width: 600px) {
+    .ParentContainer {
+        flex-direction: column;
+    }
+
+    .ParentContainer>* {
+        width: 98% !important;
+        margin: 1% !important;
+        box-sizing: border-box;
+    }
+}
+
+.ParentContainer>* {
+    /* border: 1px solid #aaa; */
+    border-radius: 5px;
     margin: 10px;
     padding: 20px;
     width: 100%;
 }
 
-#input-box{
-    height: 100px;
-    width: min(300px, 100%);
+#input-box {
+    height: 40px;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #aaa;
+    box-shadow: 3px 3px 4px #aaa;
+    border-radius: 3px;
+    resize: none;
+    padding: 5px 10px;
+    font-size: 1.1rem;
+}
+#input-box:focus{   
+    outline: 1px solid rgba(65, 105, 225, 0.463);
 }
 
-.hidden{
+.hidden {
     transform: scale(0);
 }
+
+#right-container{
+    box-shadow: 2px 3px 4px #aaa;
+    border: 1px solid #ccc;
+}
+
+.task:hover{
+    box-shadow: 0 0 3px #999;
+}
+
+.task{
+    display: flex;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.task:has(input.action-button:checked) > .task-name {
+    text-decoration: line-through;
+}
+
+.task-name{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+}
+
+.action-buttons{
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+
+.action-button:active {
+    transform: scale(0.85);
+}
+
+.action-button {
+    transition: 50ms;
+    background-color: transparent;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 0 5px;
+}
+
+.action-button {
+    cursor: pointer;
+}
+
+input.action-button{
+    height: 16px;
+    aspect-ratio: 1/1;
+}
+
+button.action-button{
+    height: 30px;
+    aspect-ratio: 1/1;
+}
+
+.done-icon, .edit-icon {
+    display: none;
+}
+
+.action-button{
+    display: block;
+}
+
+.task[data-edit-mode="on"] .done-icon{
+    transform: translateY(-2px);
+    display: block;
+}
+
+.task[data-edit-mode="off"] .edit-icon{
+    display: inline;
+}
+
+button[disabled] {
+    cursor: not-allowed;
+  }
+  

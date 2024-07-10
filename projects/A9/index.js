@@ -1,106 +1,83 @@
-let inptbx = document.getElementById('inputbx');
-let submitbtn = document.getElementById('submitbtn');
-let left_container = document.getElementById('left-container')
-submitbtn.addEventListener('click', addTask);
-let count = 1;
-let data;
+const $ = q => document.querySelector(q);
 
+const form = $("#input-form")
+const input = $("#input-box");
+const tasks = $("#tasks");
 
-getData()
+const tasksData = {};
+let _idx = 1;
 
-//  Adding task To DOM
-function addTask() {
+function createTask({ name, id, isFinished }) {
+    let task = document.createElement("div");
+    task.className = "task";
+    task.id = id;
+    task.setAttribute("data-edit-mode", "off");
+    task.innerHTML = `<div class="task-name">${name}</div>
+                    <div class="action-buttons">
+                        <button class="action-button" onclick="editTask(${id})" ${isFinished ? "disabled":""}>
+                            <span class="edit-icon">✏️</span>
+                            <span class="done-icon">✔️</span>
+                        </button>
+                        <input type="checkbox" class="action-button" onclick="finishTask(${id})" ${isFinished ? "checked" : ""}>
+                        <button class="action-button"  onclick="deleteTask(${id})">❌</button>
+                    </div>`;
 
+    tasks.append(task);
+    tasksData[id] = { id, name, isFinished, inEditMode: false, dom: task, nameDom: task.firstElementChild };
 
-    let task_value = inptbx.value;
+    saveTasksData();
+}
 
-    let taskObj = {
-        task: task_value,
-        task_id: count++,
-        is_complete: false
+function saveTasksData() {
+    localStorage.setItem("tasks-list", JSON.stringify({ ...tasksData }));
+}
+
+function loadTaskList() {
+    let data;
+    try { data = JSON.parse(localStorage.getItem("tasks-list") || "{}") } catch (e) { return; }
+    for (let key in data) {
+        // tasksData[key] = data[key];
+        createTask(data[key]);
     }
-
-    createTask(taskObj)
-    setData(taskObj)
-
+    if(Object.keys(data).length) _idx = 1 + Math.max(...Object.keys(data));
 }
 
-
-// Deleting task
-function deleteTask() {
-    let element = event.currentTarget;
-    // console.log(element)
-  
-    let parent_Element = element.parentElement;
-    let taskid = parent_Element.id
-    console.log(parent_Element)
-    parent_Element.remove();
-let idx;
-    for (let index = 0; index < data.length; index++) {
-       if(data[index].task_id==taskid)
-        idx=index;
+function editTask(id) {
+    if (!tasksData.hasOwnProperty(id)) return;
+    if(tasksData[id].isFinished) return;
+    if (tasksData[id].inEditMode) {
+        tasksData[id].inEditMode = false;
+        tasksData[id].dom.setAttribute("data-edit-mode", "off");
+        tasksData[id].nameDom.contentEditable = false;
+        tasksData[id].name = tasksData[id].nameDom.textContent;
+        saveTasksData();
+    } else {
+        tasksData[id].inEditMode = true;
+        tasksData[id].dom.setAttribute("data-edit-mode", "on");
+        tasksData[id].nameDom.contentEditable = true;
+        setTimeout(() => tasksData[id].nameDom.focus(), 0);
     }
-
-    data.splice(idx,1)
-    
-    localStorage.setItem('tasks',JSON.stringify(data))
-
-
 }
 
-
-// Creating DOM for Task
-function createTask(obj) {
-    let todo_div = document.createElement('div');
-
-    todo_div.id = obj.task_id;
-
-    let li_itm = document.createElement('li');
-    li_itm.classList.add('lists');
-    let del_btn = document.createElement('button')
-    del_btn.addEventListener('click', deleteTask)
-    let chk_box = document.createElement('input');
-
-
-    chk_box.setAttribute('type', 'checkbox');
-    chk_box.checked = obj.is_complete;
-    // add functionality for check box
-     // update task status in local storage
-// create and Add edit button 
-   // update task value in local storage
-
-
-    li_itm.innerText = obj.task;
-    del_btn.innerText = "Delete"
-    todo_div.append(li_itm)
-    todo_div.append(del_btn)
-    todo_div.append(chk_box)
-
-    left_container.append(todo_div)
+function deleteTask(id) {
+    if (!tasksData.hasOwnProperty(id)) return;
+    tasksData[id].dom.remove();
+    delete tasksData[id];
+    saveTasksData();
 }
 
-
-// Set Data
-
-function setData(obj) {
-    data.push(obj);
-    localStorage.setItem('tasks', JSON.stringify(data))
+function finishTask(id) {
+    if (!tasksData.hasOwnProperty(id)) return;
+    tasksData[id].isFinished = !tasksData[id].isFinished;
+    let editButton = tasksData[id].dom.children[1].firstElementChild;
+    editButton.disabled = tasksData[id].isFinished;
+    saveTasksData();
 }
 
-
-// get Data
-function getData(obj) {
-    data = localStorage.getItem('tasks');
-    if (data)
-        data = JSON.parse(data);
-    else
-        data = [];
-
-    data.forEach(element => {
-        createTask(element)
-    });
-
-
-
-
-}
+window.addEventListener("load", loadTaskList);
+form.addEventListener("submit", e => {
+    e.preventDefault();
+    if (!(input.value || "").trim()) return
+    createTask({ name: input.value.trim(), id: _idx++, isFinished: false })
+    input.value=""
+})

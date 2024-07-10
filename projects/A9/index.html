@@ -13,14 +13,29 @@
         <div id="left-container">
 
             <h1>TEXT AREA</h1>
-            <form>
-                <input id="input-box">
+            <form id="input-form">
+                <input id="input-box" placeholder="Enter your Task" required>
+                <!-- <div id="input-box" contenteditable=""></div> -->
                 <input type="submit" class="hidden"/>
             </form>
         </div>
 
         <div id="right-container">
             <h1>TASK LIST</h1>
+            <p>Add task to the list typing to the right and pressing enter. You may then view pending tasks below</p>
+            <div id="tasks">
+                <!-- <div class="task" data-edit-mode="on">
+                    <div class="task-name">dfd</div>
+                    <div class="action-buttons">
+                        <button class="action-button">
+                            <span class="edit-icon">✏️</span>
+                            <span class="done-icon">✔️</span>
+                        </button>
+                        <input type="checkbox" class="action-button"></button>
+                        <button class="action-button">❌</button>
+                    </div>
+                </div> -->
+            </div>
         </div>
     </div>
 </body>
