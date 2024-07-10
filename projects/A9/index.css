@@ -1,0 +1,36 @@
+.lists{
+    list-style: none;
+}
+
+
+#right-container{
+    float: right
+}
+
+#inputbox{
+    height: 20%;
+}
+   
+
+#left-container{
+    background-color: #dba358;
+    border: 2px solid blanchedalmond;
+    width: 50%;
+    
+}
+
+
+.todo-div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.ParentContainer{
+    display: flex;
+}
+
+#submitbtn{
+   display: block; 
+}
