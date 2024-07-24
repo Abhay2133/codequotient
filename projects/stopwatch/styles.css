@@ -1,0 +1,115 @@
+body{
+    margin:0;
+    height: 100dvh;
+    background-color: #111;
+}
+
+#stopwatch{
+    --w: min(98%, 500px);
+    width: var(--w);
+    position: relative;
+    left: calc(50% - var(--w) / 2);
+    border-radius: 10px;
+    background-color: #000;
+    color: white;
+    margin: 10px 0;
+    padding: 0 0 20px 0;
+}
+
+#timer {
+    color: orange;
+    height: 80px;
+    font-size: 2rem;
+}
+
+*{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.time{
+    margin: 0 5px;
+}
+
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#controls{
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+
+.control {
+    height: 60px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    font-size: 1rem;
+    background:0;
+    border: 2px solid transparent;
+    outline: 2px solid;
+    outline-offset: 3px ;
+    transition: 100ms;
+}
+
+.control:active {
+    outline-offset: 0px;
+}
+
+#start-stop-btn[data-mode=stop]{
+    --bg:  rgba(100,0,0,0.8);
+    --clr : red;
+}
+
+#start-stop-btn{
+    background-color:var(--bg);
+    color: var(--clr);
+    outline-color: var(--bg);
+}
+
+#reset-lap-btn{
+    --bg: #333;
+    background-color: var(--bg);
+    color: #aaa;
+
+    outline-color: var(--bg);
+}
+
+#laps{
+    margin: 10px 80px;
+}
+
+
+
+.lap{
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    padding: 10px;
+    border-top: 1px solid rgba(92, 92, 92, 0.3);
+}
+
+.lap-time{
+    color: #555;
+}
+
+.lap:first-child .lap-time{
+    color: #ddd;
+}
+
+.lap-label{
+    color: #555;
+}
+
+@media only screen and (max-width: 600px) {
+    #laps{
+        margin: 10px;
+    }
+}
+
+#start-stop-btn[data-mode=start]{
+    --bg: green;
+    --color: lightgreen;
+}
